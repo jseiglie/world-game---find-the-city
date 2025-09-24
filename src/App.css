@@ -1,0 +1,36 @@
+#root {
+  max-width: 1280px;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+p{
+  margin: 0;
+}
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 1rem;
+  margin-bottom: 0;
+  color: #d5d4d4;
+}
+.title > span.icon {
+  margin: 0 0.5rem;
+}
+.score,
+.target {
+  color: white;
+  font-size: 1.8em;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+}
+.my-1 {
+    margin: 1rem 0;
+    }
+
+.green{
+    color: #4caf50;
+}
