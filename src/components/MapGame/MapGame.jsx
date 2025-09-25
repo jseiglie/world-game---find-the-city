@@ -17,7 +17,7 @@ import Settings from "../Settings/Settings";
 import HighScores from "../HighScores/HighScores";
 import CountryLabels from "../CountryLabels/CountryLabels";
 
-// Fix default Leaflet icon issue
+// Fix for Leaflet icon issue
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -26,7 +26,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-// Haversine formula for 
+// Haversine formula
 function getDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // km
   const toRad = (x) => (x * Math.PI) / 180;
@@ -175,12 +175,21 @@ const MapGame = () => {
     setShowSettings(!showSettings);
   };
 
+  const handleResetScores = () => {
+    setLocalScores([]);
+    localStorage.setItem("highScores", JSON.stringify([]));
+  }
+
   useEffect(() => {
     pickRandomCity();
   }, []);
 
   return (
     <section className="map-game-wrapper">
+        <h1 className="title">
+          <span className="icon">🗺️</span>Map Game
+          <span className="icon">📌</span>
+        </h1>
       <section>
         <Scoreboard kml={kml} placedMarkers={placedMarkers} correct={correct} />
         <p className="target">
@@ -253,6 +262,7 @@ const MapGame = () => {
         <HighScores
           settings={settings}
           scores={settings.online ? highScores : localScores}
+          resetScores={handleResetScores}
         />
       )}
       <p>Developed for Digital Cuisine - 2025 @Javier Seiglie</p>

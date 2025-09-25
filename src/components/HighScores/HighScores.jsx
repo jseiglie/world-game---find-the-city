@@ -1,5 +1,5 @@
 import "./HighScores.css";
-const HighScores = ({ scores, settings }) => {
+const HighScores = ({ scores, settings, resetScores }) => {
   return (
     <section className="border hs-wrapper">
       <h3>🏆 High Scores</h3>
@@ -19,6 +19,7 @@ const HighScores = ({ scores, settings }) => {
           )}
         </ol>
       </div>
+      {scores.length > 0 && <button className="btn restart" onClick={resetScores}>Reset Scores</button>}
     </section>
   );
 };
